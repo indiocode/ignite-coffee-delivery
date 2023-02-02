@@ -6,6 +6,7 @@ import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
 import { Counter } from '~/components/Counter';
 
 import * as S from './styles';
+import { CoffeeImage } from '~/components/CoffeeImage';
 
 interface CardProps {
 	coffee: Coffee;
@@ -14,7 +15,7 @@ interface CardProps {
 export function Card({ coffee }: CardProps) {
 	return (
 		<S.CardContainer>
-			<img src={CoffeeItem} alt="" />
+			<CoffeeImage src={CoffeeItem} alt="" variantSize="large" />
 			<S.Tags>
 				{coffee.tags.length > 0 &&
 					coffee.tags.map((tag) => <span key={tag}>{tag}</span>)}

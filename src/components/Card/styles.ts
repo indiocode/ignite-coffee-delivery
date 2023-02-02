@@ -11,10 +11,9 @@ export const CardContainer = styled.div`
 	padding: 1.25rem;
 	gap: 0.75rem;
 
+	/* CoffeImage Component Position */
 	img {
 		margin-top: calc(0px - 1.25rem * 2);
-		height: 7.5rem;
-		width: 7.5rem;
 	}
 `;
 

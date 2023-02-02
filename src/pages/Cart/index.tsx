@@ -11,6 +11,7 @@ import { CoffeeItem } from '~/assets';
 
 import * as S from './styles';
 import { Counter } from '~/components/Counter';
+import { OrderItem } from '~/components/OrderItem';
 
 export function Cart() {
 	return (
@@ -91,35 +92,8 @@ export function Cart() {
 				<S.ConfirmationOrderContainer>
 					<h1>Cafés selecionados</h1>
 					<S.SecondaryFormGroupContainer>
-						<S.OrderItem>
-							<img src={CoffeeItem} alt="" />
-							<S.OrderInfo>
-								<h2>Expresso Tradicional</h2>
-								<S.OrderCart>
-									<Counter />
-									<button>
-										<Trash size={16} />
-										remover
-									</button>
-								</S.OrderCart>
-							</S.OrderInfo>
-							<span>R$ 9,90</span>
-						</S.OrderItem>
-
-						<S.OrderItem>
-							<img src={CoffeeItem} alt="" />
-							<S.OrderInfo>
-								<h2>Expresso Tradicional</h2>
-								<S.OrderCart>
-									<Counter />
-									<button>
-										<Trash size={16} />
-										remover
-									</button>
-								</S.OrderCart>
-							</S.OrderInfo>
-							<span>R$ 9,90</span>
-						</S.OrderItem>
+						<OrderItem />
+						<OrderItem />
 
 						<S.OrderTotalInfo>
 							<S.OrderTotalDetails>

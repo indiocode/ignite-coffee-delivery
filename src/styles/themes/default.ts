@@ -37,4 +37,11 @@ export const defaultTheme = {
 			xl: '35rem',
 		},
 	},
+
+	image: {
+		size: {
+			small: '4rem',
+			large: '7.5rem',
+		},
+	},
 };
