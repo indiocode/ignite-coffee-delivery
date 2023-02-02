@@ -1,7 +1,18 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	position: sticky;
+	display: flex;
+	padding: 2rem 0;
+	width: 100%;
+	align-items: center;
+	background: ${({ theme }) => theme.color.background.default};
+
 	nav {
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 

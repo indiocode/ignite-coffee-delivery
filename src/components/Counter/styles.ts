@@ -6,11 +6,13 @@ export const Counter = styled.div`
 	border-radius: 6px;
 	background-color: ${({ theme }) => theme.color.base.button};
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	width: 4.5rem;
 	height: 2.375rem;
+	padding: 0 0.5rem;
 
 	button {
+		padding: 0;
 		background: transparent;
 		border: 0;
 		cursor: pointer;

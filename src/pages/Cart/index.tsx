@@ -4,6 +4,7 @@ import {
 	CurrencyDollar,
 	MapPinLine,
 	Money,
+	Trash,
 } from 'phosphor-react';
 import { defaultTheme } from '~/styles/themes/default';
 import { CoffeeItem } from '~/assets';
@@ -92,27 +93,50 @@ export function Cart() {
 					<S.SecondaryFormGroupContainer>
 						<S.OrderItem>
 							<img src={CoffeeItem} alt="" />
-							<div>
+							<S.OrderInfo>
 								<h2>Expresso Tradicional</h2>
-								<div>
+								<S.OrderCart>
 									<Counter />
-									<button>remover</button>
-								</div>
-							</div>
+									<button>
+										<Trash size={16} />
+										remover
+									</button>
+								</S.OrderCart>
+							</S.OrderInfo>
 							<span>R$ 9,90</span>
 						</S.OrderItem>
 
 						<S.OrderItem>
 							<img src={CoffeeItem} alt="" />
-							<div>
+							<S.OrderInfo>
 								<h2>Expresso Tradicional</h2>
-								<div>
+								<S.OrderCart>
 									<Counter />
-									<button>remover</button>
-								</div>
-							</div>
+									<button>
+										<Trash size={16} />
+										remover
+									</button>
+								</S.OrderCart>
+							</S.OrderInfo>
 							<span>R$ 9,90</span>
 						</S.OrderItem>
+
+						<S.OrderTotalInfo>
+							<S.OrderTotalDetails>
+								<span>Total de itens</span>
+								<span>R$ 29,70</span>
+							</S.OrderTotalDetails>
+							<S.OrderTotalDetails>
+								<span>Entrega</span>
+								<span>R$ 3,50</span>
+							</S.OrderTotalDetails>
+							<S.OrderTotalDetailsBold>
+								<span>Total</span>
+								<span>R$ 33,20</span>
+							</S.OrderTotalDetailsBold>
+						</S.OrderTotalInfo>
+
+						<button type="submit"> Confirmar Pedido</button>
 					</S.SecondaryFormGroupContainer>
 				</S.ConfirmationOrderContainer>
 			</form>

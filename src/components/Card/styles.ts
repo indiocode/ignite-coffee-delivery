@@ -34,7 +34,7 @@ export const Tags = styled.div`
 `;
 
 export const Info = styled.div`
-	padding-top: calc(1rem - 0.75rem);
+	padding-top: calc(0px - 1rem - 0.75rem);
 	display: flex;
 	flex-direction: column;
 	text-align: center;

@@ -102,6 +102,6 @@ export const FourthCircle = styled(BaseCircleItem)`
 export const CardsContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 2rem 2.5rem;
+	gap: 2rem;
 	padding-bottom: calc(9.8125rem - 2rem);
 `;

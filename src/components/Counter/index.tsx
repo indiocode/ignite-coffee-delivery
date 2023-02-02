@@ -16,11 +16,11 @@ export function Counter() {
 
 	return (
 		<S.Counter>
-			<button onClick={decrement}>
+			<button onClick={decrement} type="button">
 				<Minus size={16} weight="fill" />
 			</button>
 			<span>{counter}</span>
-			<button onClick={increment}>
+			<button onClick={increment} type="button">
 				<Plus size={16} weight="fill" />
 			</button>
 		</S.Counter>
