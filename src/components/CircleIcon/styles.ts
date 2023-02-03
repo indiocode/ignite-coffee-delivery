@@ -15,8 +15,8 @@ export const CircleIconContainer = styled.div<CicleIconProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 2rem;
-	height: 2rem;
+	min-width: 2rem;
+	min-height: 2rem;
 	background-color: ${({ type }) => ICON_COLOR[type]};
 	border-radius: 50%;
 

@@ -7,10 +7,13 @@ export const HomeContainer = styled.div`
 		padding: 5.75rem 0;
 
 		div img {
-			width: 29.75rem;
+			max-width: 29.75rem;
+			width: 100%;
+
+			@media (max-width: 1160px) {
+				display: none;
+			}
 		}
-		/*  */
-		display: none;
 	}
 
 	section {
@@ -37,6 +40,10 @@ export const HomeMainInfo = styled.div`
 		font-family: 'Baloo 2', cursive;
 		font-weight: 800;
 		line-height: 1.3;
+
+		@media (max-width: 1160px) {
+			font-size: 2rem;
+		}
 	}
 
 	p {
@@ -52,6 +59,19 @@ export const InfoItems = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 1.25rem 0;
+
+	/* center items to layout grid */
+	justify-content: space-evenly;
+	justify-items: center;
+	align-content: space-evenly;
+	align-items: center;
+
+	/* responsive grid layout */
+	--auto-grid-min-size: 16rem;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(var(--auto-grid-min-size), 1fr)
+	);
 `;
 
 export const InfoItem = styled.div`
