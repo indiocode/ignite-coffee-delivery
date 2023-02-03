@@ -26,7 +26,7 @@ export function Order() {
 
 	const existItemsOnOrder = order.items.length > 0;
 
-	const deliveredCost = 3.5;
+	const deliveredCost = existItemsOnOrder ? 3.5 : 0;
 
 	const totalOrderItems = order.items.reduce(
 		(total, item) => total + item.product.price * item.quantity,

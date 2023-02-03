@@ -14,13 +14,13 @@ interface OrderItemProps {
 }
 
 export function OrderItem({ orderItem }: OrderItemProps) {
-	const { removeOneItem, addNewItem, removeItem } = useContext(OrderContext);
+	const { removeOneItem, addOneItem, removeItem } = useContext(OrderContext);
 
 	const [counter, setCounter] = useState<number>(orderItem.quantity);
 
 	function increment() {
 		setCounter((prev) => prev + 1);
-		addNewItem(orderItem);
+		addOneItem(orderItem);
 	}
 
 	function decrement() {
