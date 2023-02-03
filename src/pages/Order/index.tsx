@@ -4,16 +4,22 @@ import {
 	CurrencyDollar,
 	MapPinLine,
 	Money,
-	Trash,
 } from 'phosphor-react';
 import { defaultTheme } from '~/styles/themes/default';
-import { CoffeeItem } from '~/assets';
 
 import * as S from './styles';
-import { Counter } from '~/components/Counter';
 import { OrderItem } from '~/components/OrderItem';
+import { useNavigate } from 'react-router-dom';
+import { PaymentMethod } from '~/components/PaymentMethod';
+import { ChangeEvent } from 'react';
 
-export function Cart() {
+export function Order() {
+	const navigation = useNavigate();
+
+	function handleNavigateToConfirmationPage(event: ChangeEvent) {
+		navigation('/confirmation');
+	}
+
 	return (
 		<S.CartContainer>
 			<form>
@@ -30,7 +36,12 @@ export function Cart() {
 
 						<S.FormControlContainer>
 							<S.FormControl>
-								<S.Input type="text" placeholder="CEP" sizeVariant="sm" />
+								<S.Input
+									type="text"
+									placeholder="CEP"
+									sizeVariant="sm"
+									name="cep"
+								/>
 							</S.FormControl>
 							<S.FormControl>
 								<S.Input type="text" placeholder="Rua" sizeVariant="xl" />
@@ -62,29 +73,17 @@ export function Cart() {
 							</S.InfoFormGroup>
 						</S.HeaderFormGroup>
 						<S.PaymentMethodsContainer>
-							<S.PaymentMethodCard>
-								<input type="radio" id="credit" name="methodpayment" />
-								<label htmlFor="credit">
-									<CreditCard size={16} weight="regular" />
-									Cartão de Crédito
-								</label>
-							</S.PaymentMethodCard>
+							<PaymentMethod label="Cartão de Débito" id="credit">
+								<CreditCard size={16} weight="regular" />
+							</PaymentMethod>
 
-							<S.PaymentMethodCard>
-								<input type="radio" id="debit" name="methodpayment" />
-								<label htmlFor="debit">
-									<Bank size={16} weight="regular" />
-									Cartão de Crédito
-								</label>
-							</S.PaymentMethodCard>
+							<PaymentMethod label="Cartão de Débito" id="debit">
+								<Bank size={16} weight="regular" />
+							</PaymentMethod>
 
-							<S.PaymentMethodCard>
-								<input type="radio" id="money" name="methodpayment" />
-								<label htmlFor="money">
-									<Money size={16} weight="regular" />
-									Dinheiro
-								</label>
-							</S.PaymentMethodCard>
+							<PaymentMethod label="Dinheiro" id="money">
+								<Money size={16} weight="regular" />
+							</PaymentMethod>
 						</S.PaymentMethodsContainer>
 					</S.PrimaryFormGroupContainer>
 				</S.CompleteOrderContainer>
@@ -110,7 +109,7 @@ export function Cart() {
 							</S.OrderTotalDetailsBold>
 						</S.OrderTotalInfo>
 
-						<button type="submit"> Confirmar Pedido</button>
+						<button type="submit">Confirmar Pedido</button>
 					</S.SecondaryFormGroupContainer>
 				</S.ConfirmationOrderContainer>
 			</form>

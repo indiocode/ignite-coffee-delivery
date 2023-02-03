@@ -5,7 +5,7 @@ export const OrderItem = styled.div`
 	gap: 1.25rem;
 	padding: 1.5rem 0;
 
-	*/ > span {
+	> span {
 		padding-left: calc(3.125rem - 1.25rem);
 		font-weight: 700;
 		font-size: 1rem;

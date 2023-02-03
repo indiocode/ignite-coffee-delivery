@@ -7,9 +7,10 @@ export const HeaderContainer = styled.header`
 	position: sticky;
 	display: flex;
 	padding: 2rem 0;
-	width: 100%;
+	/* width: 100%; */
 	align-items: center;
-	background: ${({ theme }) => theme.color.background.default};
+	/* background: ${({ theme }) => theme.color.background.default}; */
+	background: ${({ theme }) => theme.color.white.default};
 
 	nav {
 		width: 100%;

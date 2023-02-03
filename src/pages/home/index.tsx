@@ -2,6 +2,7 @@ import { CoffeeImage } from '~/assets';
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
 import { Card } from '~/components/Card';
 import { coffeeList } from '~/data/Coffee';
+import { CircleIcon } from '~/components/CircleIcon';
 
 import * as S from './styles';
 
@@ -17,27 +18,27 @@ export function Home() {
 					</p>
 					<S.InfoItems>
 						<S.InfoItem>
-							<S.FirstCircle>
+							<CircleIcon type="tertiary">
 								<ShoppingCart weight="fill" size={16} />
-							</S.FirstCircle>
+							</CircleIcon>
 							<p>Compra simples e segura</p>
 						</S.InfoItem>
 						<S.InfoItem>
-							<S.SecondCircle>
+							<CircleIcon type="default">
 								<Package size={16} weight="fill" />
-							</S.SecondCircle>
+							</CircleIcon>
 							<p>Embalagem mantém o café intacto</p>
 						</S.InfoItem>
 						<S.InfoItem>
-							<S.ThirdCircle>
+							<CircleIcon type="secondary">
 								<Timer size={16} weight="fill" />
-							</S.ThirdCircle>
+							</CircleIcon>
 							<p>Entrega rápida e rastreada</p>
 						</S.InfoItem>
 						<S.InfoItem>
-							<S.FourthCircle>
+							<CircleIcon type="primary">
 								<Coffee size={16} weight="fill" />
-							</S.FourthCircle>
+							</CircleIcon>
 							<p>O café chega fresquinho até você</p>
 						</S.InfoItem>
 					</S.InfoItems>

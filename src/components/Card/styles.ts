@@ -4,6 +4,7 @@ export const CardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	width: 16rem;
 	height: 19.375rem;
 	background-color: ${({ theme }) => theme.color.base.card};

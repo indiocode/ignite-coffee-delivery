@@ -9,14 +9,28 @@ export const HomeContainer = styled.div`
 		div img {
 			width: 29.75rem;
 		}
+		/*  */
+		display: none;
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
+
 		gap: 3.375rem;
 		padding: 2rem 0;
+
+		@media (max-width: 532px) {
+			align-items: center;
+			justify-content: center;
+		}
 	}
+
+	/* @media (max-width: 1140px) {
+		div img {
+			width: 100%;
+		}
+	} */
 `;
 
 export const HomeMainInfo = styled.div`
@@ -70,38 +84,27 @@ export const InfoItem = styled.div`
 	}
 `;
 
-const BaseCircleItem = styled.span`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 2rem;
-	width: 2rem;
-	border-radius: 50%;
-
-	svg path {
-		color: ${({ theme }) => theme.color.background.default};
-	}
-`;
-
-export const FirstCircle = styled(BaseCircleItem)`
-	background-color: ${({ theme }) => theme.color.yellow.dark};
-`;
-
-export const SecondCircle = styled(BaseCircleItem)`
-	background-color: ${({ theme }) => theme.color.base.default};
-`;
-
-export const ThirdCircle = styled(BaseCircleItem)`
-	background-color: ${({ theme }) => theme.color.yellow.default};
-`;
-
-export const FourthCircle = styled(BaseCircleItem)`
-	background-color: ${({ theme }) => theme.color.purple.default};
-`;
-
 export const CardsContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 2rem;
 	padding-bottom: calc(9.8125rem - 2rem);
+
+	/* center items to layout grid */
+	justify-content: space-evenly;
+	justify-items: center;
+	align-content: space-evenly;
+	align-items: center;
+
+	@media (max-width: 1250px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: 960px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 532px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 `;

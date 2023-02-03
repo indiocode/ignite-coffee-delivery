@@ -12,7 +12,7 @@ export function OrderItem() {
 			<S.OrderInfo>
 				<h2>Expresso Tradicional</h2>
 				<S.OrderCart>
-					<Counter />
+					<Counter variantSize="small" />
 					<button>
 						<Trash size={16} />
 						remover

@@ -29,7 +29,7 @@ export function Card({ coffee }: CardProps) {
 					R$ <strong>{formatNumberToMoney(coffee.price)}</strong>
 				</span>
 				<S.CartItem>
-					<Counter />
+					<Counter variantSize="large" />
 					<S.Cart>
 						<ShoppingCart weight="fill" size={16} />
 					</S.Cart>

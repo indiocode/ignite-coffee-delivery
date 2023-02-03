@@ -1,9 +1,13 @@
 import { Minus, Plus } from 'phosphor-react';
 import { useState } from 'react';
 
-import * as S from './styles';
+import { CounterContainer, COUNTER_SIZE } from './styles';
 
-export function Counter() {
+interface CounterProps {
+	variantSize: keyof typeof COUNTER_SIZE;
+}
+
+export function Counter({ ...rest }: CounterProps) {
 	const [counter, setCounter] = useState<number>(1);
 
 	function increment() {
@@ -15,7 +19,7 @@ export function Counter() {
 	}
 
 	return (
-		<S.Counter>
+		<CounterContainer {...rest}>
 			<button onClick={decrement} type="button">
 				<Minus size={16} weight="fill" />
 			</button>
@@ -23,6 +27,6 @@ export function Counter() {
 			<button onClick={increment} type="button">
 				<Plus size={16} weight="fill" />
 			</button>
-		</S.Counter>
+		</CounterContainer>
 	);
 }

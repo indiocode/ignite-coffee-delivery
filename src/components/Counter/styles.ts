@@ -1,6 +1,13 @@
 import styled from 'styled-components';
+import { defaultTheme } from '~/styles/themes/default';
 
-export const Counter = styled.div`
+export const COUNTER_SIZE = defaultTheme.counter.size;
+
+interface CounterProps {
+	variantSize: keyof typeof COUNTER_SIZE;
+}
+
+export const CounterContainer = styled.div<CounterProps>`
 	display: flex;
 	gap: 0.25rem;
 	border-radius: 6px;
@@ -8,7 +15,7 @@ export const Counter = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	width: 4.5rem;
-	height: 2.375rem;
+	height: ${({ theme, variantSize }) => theme.counter.size[variantSize]};
 	padding: 0 0.5rem;
 
 	button {

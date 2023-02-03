@@ -44,4 +44,11 @@ export const defaultTheme = {
 			large: '7.5rem',
 		},
 	},
+
+	counter: {
+		size: {
+			small: '2rem',
+			large: '2.375rem',
+		},
+	},
 };
