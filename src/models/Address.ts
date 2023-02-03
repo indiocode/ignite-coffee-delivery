@@ -1,12 +1,9 @@
 export interface Address {
-	cep: string;
-	logradouro: string;
-	complemento: string;
-	bairro: string;
-	localidade: string;
-	uf: string;
-	ibge: string;
-	gia: string;
-	ddd: string;
-	siafi: string;
+	number: string;
+	zipCode: string;
+	street: string;
+	complement: string | null;
+	city: string;
+	state: string;
+	district: string;
 }

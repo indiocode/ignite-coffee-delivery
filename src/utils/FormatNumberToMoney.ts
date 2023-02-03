@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const formatNumberToMoney = (value: number): string => {
 	return value
 		.toFixed(2)

@@ -1,3 +1,4 @@
+import { Address } from '~/models/Address';
 import { Order, ItemOrder } from '~/models/Order';
 import { ActionTypes } from './action';
 
@@ -5,18 +6,21 @@ interface OrderState {
 	order: Order;
 }
 
+// interface OrderPayload {
+// 	orderItem: ItemOrder;
+// 	address: Address;
+// }
+
 export interface Action {
 	type: ActionTypes;
-	payload: {
-		orderItem: ItemOrder;
-	};
+	payload: ItemOrder | Address;
 }
 
 export function orderReducer(state: OrderState, action: Action): OrderState {
 	switch (action.type) {
 		case ActionTypes.ADD_NEW_ITEM: {
 			const { items } = state.order;
-			const { product, quantity } = action.payload.orderItem;
+			const { product, quantity } = action.payload as ItemOrder;
 
 			const existingIndex = items.findIndex(
 				(item) => item.product.id === product.id,
@@ -26,7 +30,7 @@ export function orderReducer(state: OrderState, action: Action): OrderState {
 				return {
 					order: {
 						...state.order,
-						items: [...state.order.items, action.payload.orderItem],
+						items: [...state.order.items, { product, quantity }],
 					},
 				};
 
@@ -48,7 +52,7 @@ export function orderReducer(state: OrderState, action: Action): OrderState {
 
 		case ActionTypes.ADD_ONE_ITEM: {
 			const { items } = state.order;
-			const { product } = action.payload.orderItem;
+			const { product } = action.payload as ItemOrder;
 
 			return {
 				order: {
@@ -67,7 +71,7 @@ export function orderReducer(state: OrderState, action: Action): OrderState {
 
 		case ActionTypes.REMOVE_ONE_ITEM: {
 			const { items } = state.order;
-			const { product } = action.payload.orderItem;
+			const { product } = action.payload as ItemOrder;
 
 			return {
 				order: {
@@ -86,12 +90,21 @@ export function orderReducer(state: OrderState, action: Action): OrderState {
 
 		case ActionTypes.REMOVE_ITEM: {
 			const { items } = state.order;
-			const { product } = action.payload.orderItem;
+			const { product } = action.payload as ItemOrder;
 
 			return {
 				order: {
 					...state.order,
 					items: items.filter((item) => item.product.id !== product.id),
+				},
+			};
+		}
+
+		case ActionTypes.ADD_ADDRESS_DELIVERED: {
+			return {
+				order: {
+					...state.order,
+					address: action.payload as Address,
 				},
 			};
 		}

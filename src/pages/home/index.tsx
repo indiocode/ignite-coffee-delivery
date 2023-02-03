@@ -1,6 +1,6 @@
 import { CoffeeImage } from '~/assets';
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
-import { Card } from '~/components/Card';
+import { Card } from '~/pages/home/Components/Card';
 import { coffeeList } from '~/data/Coffee';
 import { CircleIcon } from '~/components/CircleIcon';
 

@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { createContext, ReactNode, useReducer } from 'react';
 import { Order, ItemOrder } from '~/models/Order';
 import { orderReducer } from '~/reducers/order/reducer';
 import {
+	addAddressDeliveredAction,
 	addNewItemAction,
 	addOneItemAction,
 	removeItemAction,
 	removeOneItemAction,
 } from '~/reducers/order/action';
+import { Address } from '~/models/Address';
 
 interface OrderContextType {
 	order: Order;
@@ -14,6 +17,7 @@ interface OrderContextType {
 	removeOneItem: (item: ItemOrder) => void;
 	addOneItem: (item: ItemOrder) => void;
 	removeItem: (item: ItemOrder) => void;
+	addAddressDelivered: (address: Address) => void;
 }
 
 interface OrderContextProps {
@@ -23,6 +27,7 @@ interface OrderContextProps {
 const initialState: Order = {
 	items: [],
 	paymentMethod: null,
+	address: null,
 };
 
 export const OrderContext = createContext({} as OrderContextType);
@@ -39,6 +44,8 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 	);
 
 	const { order } = orderState;
+
+	console.log(order);
 
 	function addNewItem(item: ItemOrder) {
 		const newItem: ItemOrder = {
@@ -61,9 +68,21 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 		dispatch(removeItemAction(item));
 	}
 
+	function addAddressDelivered(address: Address) {
+		dispatch(addAddressDeliveredAction(address));
+	}
+
 	return (
 		<OrderContext.Provider
-			value={{ order, addNewItem, removeOneItem, addOneItem, removeItem }}>
+			value={{
+				order,
+				addNewItem,
+				removeOneItem,
+				addOneItem,
+				removeItem,
+				addAddressDelivered,
+			}}
+		>
 			{children}
 		</OrderContext.Provider>
 	);

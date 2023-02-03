@@ -1,5 +1,5 @@
-import { Money } from 'phosphor-react';
 import { InputHTMLAttributes, ReactNode } from 'react';
+import { useFormContext } from 'react-hook-form';
 import * as S from './styles';
 
 interface PaymentMethodProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -12,9 +12,16 @@ export function PaymentMethod({
 	label,
 	...rest
 }: PaymentMethodProps) {
+	const { register } = useFormContext();
 	return (
 		<S.PaymentMethodCard>
-			<input {...rest} name="methodpayment" type="radio" value={rest.id} />
+			<input
+				{...rest}
+				// name="methodpayment"
+				type="radio"
+				value={rest.id}
+				{...register('methodpayment')}
+			/>
 			<label htmlFor={rest.id}>
 				{children}
 				{label}

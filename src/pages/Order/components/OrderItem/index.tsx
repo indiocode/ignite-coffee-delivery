@@ -4,7 +4,7 @@ import { Counter } from '~/components/Counter';
 import { Trash } from 'phosphor-react';
 import { CoffeeItem } from '~/assets';
 import { CoffeeImage } from '~/components/CoffeeImage';
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { OrderContext } from '~/contexts/OrderContext';
 import { ItemOrder } from '~/models/Order';
 import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
@@ -28,9 +28,9 @@ export function OrderItem({ orderItem }: OrderItemProps) {
 		removeOneItem(orderItem);
 	}
 
-	function handleRemoveItem() {
+	const handleRemoveItem = useCallback(() => {
 		removeItem(orderItem);
-	}
+	}, [orderItem, removeItem]);
 
 	const totalOrderItem = orderItem.product.price * orderItem.quantity;
 
@@ -38,7 +38,7 @@ export function OrderItem({ orderItem }: OrderItemProps) {
 		if (counter === 0) {
 			handleRemoveItem();
 		}
-	}, [counter]);
+	}, [counter, handleRemoveItem]);
 
 	return (
 		<S.OrderItem>

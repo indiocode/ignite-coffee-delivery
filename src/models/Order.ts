@@ -1,6 +1,7 @@
+import { Address } from './Address';
 import { Coffee } from './Coffee';
 
-type PaymentMethod = 'credit' | 'debit' | 'money' | null;
+export type PaymentMethod = 'credit' | 'debit' | 'money' | null;
 
 export interface ItemOrder {
 	product: Coffee;
@@ -8,7 +9,7 @@ export interface ItemOrder {
 }
 
 export interface Order {
-	// id: string;
 	items: ItemOrder[];
+	address: Address | null;
 	paymentMethod: PaymentMethod;
 }

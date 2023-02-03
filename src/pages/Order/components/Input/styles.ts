@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import { defaultTheme } from '~/styles/themes/default';
-import InputMask from 'react-input-mask';
 
 export const INPUT_SIZES = defaultTheme.inputs.size;
 
 interface InputProps {
-	sizeVariant: keyof typeof INPUT_SIZES;
+	readonly sizeVariant: keyof typeof INPUT_SIZES;
 }
 
-export const InputMasked = styled(InputMask)<InputProps>`
+export const Input = styled.input<InputProps>`
 	max-width: ${({ theme, sizeVariant }) => theme.inputs.size[sizeVariant]};
 	width: 100%;
 	border-radius: 4px;
