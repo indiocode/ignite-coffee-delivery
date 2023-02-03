@@ -3,6 +3,12 @@ import styled from 'styled-components';
 export const ConfirmationContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
+
+	@media (max-width: 1090px) {
+		padding-top: 2rem;
+		flex-direction: column;
+		align-items: center;
+	}
 `;
 
 const BaseSectionContainer = styled.section`
@@ -54,6 +60,10 @@ export const ImageContainer = styled(BaseSectionContainer)`
 	padding-top: 3.625rem;
 	width: 492px;
 	height: 293px;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const InfoItem = styled.div`

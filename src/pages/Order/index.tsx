@@ -16,7 +16,7 @@ import { ChangeEvent } from 'react';
 export function Order() {
 	const navigation = useNavigate();
 
-	function handleNavigateToConfirmationPage(event: ChangeEvent) {
+	function handleNavigateToConfirmationPage() {
 		navigation('/confirmation');
 	}
 
@@ -109,7 +109,9 @@ export function Order() {
 							</S.OrderTotalDetailsBold>
 						</S.OrderTotalInfo>
 
-						<button type="submit">Confirmar Pedido</button>
+						<button type="submit" onClick={handleNavigateToConfirmationPage}>
+							Confirmar Pedido
+						</button>
 					</S.SecondaryFormGroupContainer>
 				</S.ConfirmationOrderContainer>
 			</form>
