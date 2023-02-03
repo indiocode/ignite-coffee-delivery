@@ -51,7 +51,7 @@ export function Confirmation() {
 			</S.ConfirmationDetailsContainer>
 
 			<S.ImageContainer>
-				<img src={Delivery} alt="" />
+				<img src={Delivery} alt="Delivery Image" loading="lazy" />
 			</S.ImageContainer>
 		</S.ConfirmationContainer>
 	);

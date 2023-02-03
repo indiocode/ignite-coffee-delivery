@@ -14,6 +14,10 @@ export const HomeContainer = styled.div`
 				display: none;
 			}
 		}
+
+		@media (max-width: 1160px) {
+			padding: 2rem 0;
+		}
 	}
 
 	section {

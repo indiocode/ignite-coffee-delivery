@@ -9,7 +9,7 @@ export function Header() {
 		<S.HeaderContainer>
 			<nav>
 				<NavLink to="/">
-					<img src={Logo} />
+					<img src={Logo} loading="lazy" alt="Logo Image" />
 				</NavLink>
 
 				<div>

@@ -9,7 +9,7 @@ export function OrderItem() {
 	return (
 		<S.OrderItem>
 			<S.OrderInfo>
-				<CoffeeImage src={CoffeeItem} alt="" variantSize="small" />
+				<CoffeeImage src={CoffeeItem} alt="Coffee Image" variantSize="small" />
 				<S.OrderDetail>
 					<h2>Expresso Tradicional</h2>
 					<S.OrderCart>

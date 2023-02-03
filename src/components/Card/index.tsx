@@ -15,7 +15,7 @@ interface CardProps {
 export function Card({ coffee }: CardProps) {
 	return (
 		<S.CardContainer>
-			<CoffeeImage src={CoffeeItem} alt="" variantSize="large" />
+			<CoffeeImage src={CoffeeItem} alt="Image de Café" variantSize="large" />
 			<S.Tags>
 				{coffee.tags.length > 0 &&
 					coffee.tags.map((tag) => <span key={tag}>{tag}</span>)}

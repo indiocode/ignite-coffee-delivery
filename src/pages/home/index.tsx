@@ -44,7 +44,11 @@ export function Home() {
 					</S.InfoItems>
 				</S.HomeMainInfo>
 				<div>
-					<img src={CoffeeImage} alt="Recepiente térmico de café" />
+					<img
+						src={CoffeeImage}
+						alt="Recepiente térmico de café"
+						loading="lazy"
+					/>
 				</div>
 			</main>
 

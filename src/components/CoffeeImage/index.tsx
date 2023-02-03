@@ -6,5 +6,5 @@ interface CoffeeImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export function CoffeeImage({ ...rest }: CoffeeImageProps) {
-	return <ImageContainer {...rest} />;
+	return <ImageContainer {...rest} loading="lazy" />;
 }
