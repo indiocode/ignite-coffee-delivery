@@ -7,8 +7,9 @@ import { CompleteForm } from './components/CompleteForm';
 import { ConfirmationForm } from './components/ConfirmationForm';
 import { useContext } from 'react';
 import { OrderContext } from '~/contexts/OrderContext';
+import { Address } from '~/models/Address';
 
-const completeAddressFormValidationSchema = zod.object({
+const CompleteFormValidationSchema = zod.object({
 	zipCode: zod.string(),
 	street: zod.string(),
 	number: zod.string(),
@@ -16,30 +17,29 @@ const completeAddressFormValidationSchema = zod.object({
 	city: zod.string(),
 	state: zod.string(),
 	district: zod.string(),
-	methodpayment: zod.string(),
+	methodpayment: zod.enum(['credit', 'debit', 'money']),
 });
 
-type CompleteAddressFormData = zod.infer<
-	typeof completeAddressFormValidationSchema
->;
+type CompleteFormData = zod.infer<typeof CompleteFormValidationSchema>;
 
 export function Order() {
 	const navigation = useNavigate();
 
-	const { addAddressDelivered } = useContext(OrderContext);
+	const { addAddressDelivered, addPaymentMethod } = useContext(OrderContext);
 
-	const completeAddress = useForm<CompleteAddressFormData>({
-		resolver: zodResolver(completeAddressFormValidationSchema),
+	const completeAddress = useForm<CompleteFormData>({
+		resolver: zodResolver(CompleteFormValidationSchema),
 	});
 
 	const { handleSubmit, reset } = completeAddress;
 
-	function handleOrderConfimation(data: CompleteAddressFormData) {
-		navigation('/confirmation');
-
+	function handleOrderConfimation(data: CompleteFormData) {
 		const { methodpayment, ...rest } = data;
 
-		addAddressDelivered(rest);
+		addAddressDelivered(rest as Address);
+		addPaymentMethod(methodpayment);
+
+		navigation('/confirmation');
 
 		reset();
 	}

@@ -1,19 +1,14 @@
 import { Address } from '~/models/Address';
-import { Order, ItemOrder } from '~/models/Order';
+import { Order, ItemOrder, PaymentMethod } from '~/models/Order';
 import { ActionTypes } from './action';
 
 interface OrderState {
 	order: Order;
 }
 
-// interface OrderPayload {
-// 	orderItem: ItemOrder;
-// 	address: Address;
-// }
-
 export interface Action {
 	type: ActionTypes;
-	payload: ItemOrder | Address;
+	payload: ItemOrder | Address | PaymentMethod;
 }
 
 export function orderReducer(state: OrderState, action: Action): OrderState {
@@ -105,6 +100,15 @@ export function orderReducer(state: OrderState, action: Action): OrderState {
 				order: {
 					...state.order,
 					address: action.payload as Address,
+				},
+			};
+		}
+
+		case ActionTypes.ADD_PAYMENT_METHOD: {
+			return {
+				order: {
+					...state.order,
+					paymentMethod: action.payload as PaymentMethod,
 				},
 			};
 		}

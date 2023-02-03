@@ -5,7 +5,6 @@ import {
 	MapPinLine,
 	Money,
 } from 'phosphor-react';
-import { useFormContext } from 'react-hook-form';
 import { defaultTheme } from '~/styles/themes/default';
 import { Input } from '../Input';
 import { PaymentMethod } from '../PaymentMethod';
@@ -78,15 +77,15 @@ export function CompleteForm() {
 					</S.InfoFormGroup>
 				</S.HeaderFormGroup>
 				<S.PaymentMethodsContainer>
-					<PaymentMethod label="Cartão de Débito" id="credit">
+					<PaymentMethod label="Cartão de Crédito" paymentMethod="credit">
 						<CreditCard size={16} weight="regular" />
 					</PaymentMethod>
 
-					<PaymentMethod label="Cartão de Débito" id="debit">
+					<PaymentMethod label="Cartão de Débito" paymentMethod="debit">
 						<Bank size={16} weight="regular" />
 					</PaymentMethod>
 
-					<PaymentMethod label="Dinheiro" id="money">
+					<PaymentMethod label="Dinheiro" paymentMethod="money">
 						<Money size={16} weight="regular" />
 					</PaymentMethod>
 				</S.PaymentMethodsContainer>

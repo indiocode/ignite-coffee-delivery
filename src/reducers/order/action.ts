@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Address } from '~/models/Address';
-import { ItemOrder } from '~/models/Order';
+import { ItemOrder, PaymentMethod } from '~/models/Order';
 
 export enum ActionTypes {
 	ADD_NEW_ITEM = 'ADD_NEW_ITEM',
@@ -8,6 +8,7 @@ export enum ActionTypes {
 	REMOVE_ONE_ITEM = 'REMOVE_ONE_ITEM',
 	REMOVE_ITEM = 'REMOVE_ITEM',
 	ADD_ADDRESS_DELIVERED = 'ADD_ADDRESS_DELIVERED',
+	ADD_PAYMENT_METHOD = 'ADD_PAYMENT_METHOD',
 }
 
 export function addNewItemAction(orderItem: ItemOrder) {
@@ -42,5 +43,12 @@ export function addAddressDeliveredAction(address: Address) {
 	return {
 		type: ActionTypes.ADD_ADDRESS_DELIVERED,
 		payload: address,
+	};
+}
+
+export function addPaymentMethodAction(paymentMethod: PaymentMethod) {
+	return {
+		type: ActionTypes.ADD_PAYMENT_METHOD,
+		payload: paymentMethod,
 	};
 }

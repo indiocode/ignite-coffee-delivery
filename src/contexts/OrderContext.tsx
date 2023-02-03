@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { createContext, ReactNode, useReducer } from 'react';
-import { Order, ItemOrder } from '~/models/Order';
+import { Order, ItemOrder, PaymentMethod } from '~/models/Order';
 import { orderReducer } from '~/reducers/order/reducer';
 import {
 	addAddressDeliveredAction,
 	addNewItemAction,
 	addOneItemAction,
+	addPaymentMethodAction,
 	removeItemAction,
 	removeOneItemAction,
 } from '~/reducers/order/action';
@@ -18,6 +19,7 @@ interface OrderContextType {
 	addOneItem: (item: ItemOrder) => void;
 	removeItem: (item: ItemOrder) => void;
 	addAddressDelivered: (address: Address) => void;
+	addPaymentMethod: (paymentMethod: PaymentMethod) => void;
 }
 
 interface OrderContextProps {
@@ -72,6 +74,10 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 		dispatch(addAddressDeliveredAction(address));
 	}
 
+	function addPaymentMethod(paymentMethod: PaymentMethod) {
+		dispatch(addPaymentMethodAction(paymentMethod));
+	}
+
 	return (
 		<OrderContext.Provider
 			value={{
@@ -81,6 +87,7 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 				addOneItem,
 				removeItem,
 				addAddressDelivered,
+				addPaymentMethod,
 			}}
 		>
 			{children}
