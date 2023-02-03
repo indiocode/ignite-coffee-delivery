@@ -3,8 +3,14 @@ import { MapPin, ShoppingCart } from 'phosphor-react';
 
 import * as S from './styles';
 import { Logo } from '~/assets';
+import { useContext } from 'react';
+import { OrderContext } from '~/contexts/OrderContext';
 
 export function Header() {
+	const { order } = useContext(OrderContext);
+
+	const existItemsOnOrder = order.items.length > 0;
+
 	return (
 		<S.HeaderContainer>
 			<nav>
@@ -19,7 +25,7 @@ export function Header() {
 					</span>
 					<NavLink to="/cart">
 						<ShoppingCart size={18} weight="fill" />
-						<span>2</span>
+						{existItemsOnOrder && <span>{order.items.length} </span>}
 					</NavLink>
 				</div>
 			</nav>

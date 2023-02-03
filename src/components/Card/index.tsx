@@ -7,12 +7,38 @@ import { Counter } from '~/components/Counter';
 
 import * as S from './styles';
 import { CoffeeImage } from '~/components/CoffeeImage';
+import { useContext, useState } from 'react';
+import { OrderContext } from '~/contexts/OrderContext';
+import { ItemOrder } from '~/models/Order';
 
 interface CardProps {
 	coffee: Coffee;
 }
 
 export function Card({ coffee }: CardProps) {
+	const { addNewItem } = useContext(OrderContext);
+
+	const [counter, setCounter] = useState<number>(1);
+
+	function increment() {
+		setCounter((prev) => prev + 1);
+	}
+
+	function decrement() {
+		setCounter((prev) => (prev > 1 ? prev - 1 : prev));
+	}
+
+	function handleAddNewItem(product: Coffee) {
+		const newItemOrder: ItemOrder = {
+			product,
+			quantity: counter,
+		};
+
+		addNewItem(newItemOrder);
+
+		setCounter(1);
+	}
+
 	return (
 		<S.CardContainer>
 			<CoffeeImage src={CoffeeItem} alt="Image de Café" variantSize="large" />
@@ -29,8 +55,13 @@ export function Card({ coffee }: CardProps) {
 					R$ <strong>{formatNumberToMoney(coffee.price)}</strong>
 				</span>
 				<S.CartItem>
-					<Counter variantSize="large" />
-					<S.Cart>
+					<Counter
+						counter={counter}
+						variantSize="large"
+						acrease={increment}
+						decrease={decrement}
+					/>
+					<S.Cart onClick={() => handleAddNewItem(coffee)}>
 						<ShoppingCart weight="fill" size={16} />
 					</S.Cart>
 				</S.CartItem>

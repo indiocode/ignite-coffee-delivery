@@ -11,14 +11,29 @@ import * as S from './styles';
 import { OrderItem } from '~/components/OrderItem';
 import { useNavigate } from 'react-router-dom';
 import { PaymentMethod } from '~/components/PaymentMethod';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useContext } from 'react';
+import { OrderContext } from '~/contexts/OrderContext';
+import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
 
 export function Order() {
 	const navigation = useNavigate();
 
+	const { order } = useContext(OrderContext);
+
 	function handleNavigateToConfirmationPage() {
 		navigation('/confirmation');
 	}
+
+	const existItemsOnOrder = order.items.length > 0;
+
+	const deliveredCost = 3.5;
+
+	const totalOrderItems = order.items.reduce(
+		(total, item) => total + item.product.price * item.quantity,
+		0,
+	);
+
+	const totalOrder = totalOrderItems + deliveredCost;
 
 	return (
 		<S.CartContainer>
@@ -91,21 +106,23 @@ export function Order() {
 				<S.ConfirmationOrderContainer>
 					<h1>Cafés selecionados</h1>
 					<S.SecondaryFormGroupContainer>
-						<OrderItem />
-						<OrderItem />
+						{existItemsOnOrder &&
+							order.items.map((item) => (
+								<OrderItem orderItem={item} key={item.product.id} />
+							))}
 
 						<S.OrderTotalInfo>
 							<S.OrderTotalDetails>
 								<span>Total de itens</span>
-								<span>R$ 29,70</span>
+								<span>R$ {formatNumberToMoney(totalOrderItems)}</span>
 							</S.OrderTotalDetails>
 							<S.OrderTotalDetails>
 								<span>Entrega</span>
-								<span>R$ 3,50</span>
+								<span>R$ {formatNumberToMoney(deliveredCost)}</span>
 							</S.OrderTotalDetails>
 							<S.OrderTotalDetailsBold>
 								<span>Total</span>
-								<span>R$ 33,20</span>
+								<span>R$ {formatNumberToMoney(totalOrder)}</span>
 							</S.OrderTotalDetailsBold>
 						</S.OrderTotalInfo>
 
