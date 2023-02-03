@@ -14,6 +14,8 @@ import { PaymentMethod } from '~/components/PaymentMethod';
 import { ChangeEvent, useContext } from 'react';
 import { OrderContext } from '~/contexts/OrderContext';
 import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
+import * as AddressService from '~/services/Address';
+import { Input } from '~/components/Input';
 
 export function Order() {
 	const navigation = useNavigate();
@@ -22,6 +24,16 @@ export function Order() {
 
 	function handleNavigateToConfirmationPage() {
 		navigation('/confirmation');
+		handleGetAddress();
+	}
+
+	async function handleGetAddress() {
+		try {
+			const { data } = await AddressService.getAddress('69104-015');
+			console.log(data);
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	const existItemsOnOrder = order.items.length > 0;
@@ -51,24 +63,24 @@ export function Order() {
 
 						<S.FormControlContainer>
 							<S.FormControl>
-								<S.Input
-									type="text"
-									placeholder="CEP"
-									sizeVariant="sm"
-									name="cep"
+								<Input mask="99999-999" sizeVariant="sm" placeholder="CEP" />
+							</S.FormControl>
+							<S.FormControl>
+								<Input sizeVariant="xl" placeholder="Rua" />
+							</S.FormControl>
+							<S.FormControl>
+								<Input mask="9999" sizeVariant="sm" placeholder="Número" />
+								<Input sizeVariant="lg" placeholder="Complemento" />
+							</S.FormControl>
+							<S.FormControl>
+								<Input sizeVariant="sm" placeholder="Bairro" />
+								<Input sizeVariant="md" placeholder="Cidade" />
+								<Input
+									mask={[new RegExp(/[A-Z]/i)]}
+									sizeVariant="esm"
+									placeholder="UF"
+									maxLength={2}
 								/>
-							</S.FormControl>
-							<S.FormControl>
-								<S.Input type="text" placeholder="Rua" sizeVariant="xl" />
-							</S.FormControl>
-							<S.FormControl>
-								<S.Input type="text" placeholder="Número" sizeVariant="sm" />
-								<S.Input type="text" placeholder="Completo" sizeVariant="lg" />
-							</S.FormControl>
-							<S.FormControl>
-								<S.Input type="text" placeholder="Bairro" sizeVariant="sm" />
-								<S.Input type="text" placeholder="Cidade" sizeVariant="md" />
-								<S.Input type="text" placeholder="UF" sizeVariant="esm" />
 							</S.FormControl>
 						</S.FormControlContainer>
 					</S.PrimaryFormGroupContainer>
