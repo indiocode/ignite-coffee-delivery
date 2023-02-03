@@ -4,6 +4,8 @@ export const OrderItem = styled.div`
 	display: flex;
 	gap: 1.25rem;
 	padding: 1.5rem 0;
+	flex-wrap: wrap;
+	justify-content: space-between;
 
 	> span {
 		padding-left: calc(3.125rem - 1.25rem);
@@ -21,7 +23,6 @@ export const OrderItem = styled.div`
 
 export const OrderInfo = styled.div`
 	display: flex;
-	flex-direction: column;
 	gap: 0.5rem;
 
 	h2 {
@@ -56,4 +57,10 @@ export const OrderCart = styled.div`
 			color: ${({ theme }) => theme.color.purple.default};
 		}
 	}
+`;
+
+export const OrderDetail = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 `;

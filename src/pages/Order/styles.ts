@@ -11,6 +11,12 @@ export const CartContainer = styled.div`
 		display: flex;
 		gap: 2rem;
 	}
+
+	@media (max-width: 1090px) {
+		form {
+			flex-direction: column;
+		}
+	}
 `;
 
 const BaseSectionContainer = styled.section`
@@ -30,10 +36,18 @@ const BaseSectionContainer = styled.section`
 
 export const CompleteOrderContainer = styled(BaseSectionContainer)`
 	max-width: 40rem;
+
+	@media (max-width: 768px) {
+		max-width: 100%;
+	}
 `;
 
 export const ConfirmationOrderContainer = styled(BaseSectionContainer)`
 	max-width: 28rem;
+
+	@media (max-width: 768px) {
+		max-width: 100%;
+	}
 `;
 
 const BaseFormGroupContainer = styled.div`
@@ -87,6 +101,8 @@ export const InfoFormGroup = styled.div`
 export const PaymentMethodsContainer = styled.div`
 	display: flex;
 	gap: 0.75rem;
+
+	flex-wrap: wrap;
 `;
 
 export const FormControlContainer = styled.div`
@@ -98,6 +114,10 @@ export const FormControlContainer = styled.div`
 export const FormControl = styled.div`
 	display: flex;
 	gap: 1rem;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
 `;
 
 const INPUT_SIZES = defaultTheme.inputs.size;
@@ -112,10 +132,13 @@ export const Input = styled.input<InputProps>`
 	border-radius: 4px;
 	padding: 0.75rem;
 	border: 0;
-
 	font-weight: 400;
 	font-size: 0.875rem;
 	line-height: 1.3;
+
+	@media (max-width: 768px) {
+		max-width: 100%;
+	}
 `;
 
 export const OrderTotalInfo = styled.div`
