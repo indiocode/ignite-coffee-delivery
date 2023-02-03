@@ -19,18 +19,7 @@ export const HomeContainer = styled.div`
 
 		gap: 3.375rem;
 		padding: 2rem 0;
-
-		@media (max-width: 532px) {
-			align-items: center;
-			justify-content: center;
-		}
 	}
-
-	/* @media (max-width: 1140px) {
-		div img {
-			width: 100%;
-		}
-	} */
 `;
 
 export const HomeMainInfo = styled.div`
@@ -41,7 +30,6 @@ export const HomeMainInfo = styled.div`
 
 	max-width: 36.75rem;
 	width: 100%;
-	/* height: 192px; */
 
 	h1 {
 		color: ${({ theme }) => theme.color.base.title};
@@ -74,7 +62,6 @@ export const InfoItem = styled.div`
 
 	max-width: 35.4375rem;
 	width: 100%;
-	/* height: 84px; */
 
 	p {
 		font-weight: 400;
@@ -86,7 +73,6 @@ export const InfoItem = styled.div`
 
 export const CardsContainer = styled.div`
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
 	gap: 2rem;
 	padding-bottom: calc(9.8125rem - 2rem);
 
@@ -96,15 +82,10 @@ export const CardsContainer = styled.div`
 	align-content: space-evenly;
 	align-items: center;
 
-	@media (max-width: 1250px) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	@media (max-width: 960px) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@media (max-width: 532px) {
-		grid-template-columns: repeat(1, 1fr);
-	}
+	/* responsive grid layout */
+	--auto-grid-min-size: 16rem;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(var(--auto-grid-min-size), 1fr)
+	);
 `;

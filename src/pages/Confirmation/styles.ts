@@ -3,13 +3,11 @@ import styled from 'styled-components';
 export const ConfirmationContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	/* padding: 2.5rem 0; */
 `;
 
 const BaseSectionContainer = styled.section`
 	display: flex;
 	flex-direction: column;
-	/* gap: 0.75rem; */
 	width: 100%;
 `;
 
@@ -66,7 +64,6 @@ export const InfoItem = styled.div`
 
 	max-width: 35.4375rem;
 	width: 100%;
-	/* height: 84px; */
 
 	p {
 		font-weight: 400;
