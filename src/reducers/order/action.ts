@@ -57,5 +57,6 @@ export function addPaymentMethodAction(paymentMethod: PaymentMethod) {
 export function fineshedOrderAction() {
 	return {
 		type: ActionTypes.FINESHEED_ORDER,
+		payload: null,
 	};
 }

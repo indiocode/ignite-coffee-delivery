@@ -1,4 +1,3 @@
-import { INITIAL_STATE } from '~/contexts/OrderContext';
 import { Address } from '~/models/Address';
 import { Order, ItemOrder, PaymentMethod } from '~/models/Order';
 import { ActionTypes } from './action';
@@ -9,7 +8,7 @@ interface OrderState {
 
 export interface Action {
 	type: ActionTypes;
-	payload: ItemOrder | Address | PaymentMethod;
+	payload: ItemOrder | Address | PaymentMethod | null;
 }
 
 export function orderReducer(state: OrderState, action: Action): OrderState {
