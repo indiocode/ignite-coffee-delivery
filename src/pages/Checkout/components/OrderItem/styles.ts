@@ -56,6 +56,10 @@ export const OrderCart = styled.div`
 		svg {
 			color: ${({ theme }) => theme.color.purple.default};
 		}
+
+		&:hover {
+			background-color: ${({ theme }) => theme.color.base.hover};
+		}
 	}
 `;
 

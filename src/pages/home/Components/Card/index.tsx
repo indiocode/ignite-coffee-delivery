@@ -1,5 +1,4 @@
 import { ShoppingCart } from 'phosphor-react';
-import { CoffeeItem } from '~/assets';
 import { Coffee } from '~/models/Coffee';
 import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
 
@@ -44,7 +43,11 @@ export function Card({ coffee }: CardProps) {
 
 	return (
 		<S.CardContainer>
-			<CoffeeImage src={CoffeeItem} alt="Image de Café" variantSize="large" />
+			<CoffeeImage
+				src={coffee.image.url}
+				alt={`Imagem de um bom ${coffee.name}`}
+				variantSize="large"
+			/>
 			<S.Tags>
 				{coffee.tags.length > 0 &&
 					coffee.tags.map((tag) => <span key={tag}>{tag}</span>)}

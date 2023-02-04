@@ -18,6 +18,7 @@ const BaseSectionContainer = styled.section`
 `;
 
 export const ConfirmationDetailsContainer = styled(BaseSectionContainer)`
+	padding-top: 5rem;
 	max-width: 32.875rem;
 
 	h1 {

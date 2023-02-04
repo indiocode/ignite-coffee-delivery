@@ -2,7 +2,6 @@ import * as S from './styles';
 
 import { Counter } from '~/components/Counter';
 import { Trash } from 'phosphor-react';
-import { CoffeeItem } from '~/assets';
 import { CoffeeImage } from '~/components/CoffeeImage';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { OrderContext } from '~/contexts/OrderContext';
@@ -43,7 +42,11 @@ export function OrderItem({ orderItem }: OrderItemProps) {
 	return (
 		<S.OrderItem>
 			<S.OrderInfo>
-				<CoffeeImage src={CoffeeItem} alt="Coffee Image" variantSize="small" />
+				<CoffeeImage
+					src={orderItem.product.image.url}
+					alt="Coffee Image"
+					variantSize="small"
+				/>
 				<S.OrderDetail>
 					<h2>{orderItem.product.name}</h2>
 					<S.OrderCart>

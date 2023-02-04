@@ -92,4 +92,8 @@ export const Cart = styled.span`
 	svg path {
 		color: ${({ theme }) => theme.color.background.default};
 	}
+
+	&:hover {
+		background-color: ${({ theme }) => theme.color.purple.default};
+	}
 `;

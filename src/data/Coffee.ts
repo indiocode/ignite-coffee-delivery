@@ -1,4 +1,20 @@
 import { v4 as uuidv4 } from 'uuid';
+import {
+	CoffeeImage1,
+	CoffeeImage10,
+	CoffeeImage11,
+	CoffeeImage12,
+	CoffeeImage13,
+	CoffeeImage14,
+	CoffeeImage2,
+	CoffeeImage3,
+	CoffeeImage4,
+	CoffeeImage5,
+	CoffeeImage6,
+	CoffeeImage7,
+	CoffeeImage8,
+	CoffeeImage9,
+} from '~/assets';
 import { Coffee } from '~/models/Coffee';
 
 export const coffeeList: Coffee[] = [
@@ -9,7 +25,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage1,
 		},
 	},
 	{
@@ -19,7 +35,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage2,
 		},
 	},
 	{
@@ -29,7 +45,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage3,
 		},
 	},
 
@@ -40,7 +56,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional', 'Gelado'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage4,
 		},
 	},
 
@@ -51,7 +67,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional', 'com leite'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage5,
 		},
 	},
 
@@ -63,7 +79,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional', 'com leite'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage6,
 		},
 	},
 
@@ -75,7 +91,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional', 'com leite'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage7,
 		},
 	},
 
@@ -87,7 +103,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional', 'com leite'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage8,
 		},
 	},
 
@@ -98,7 +114,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Tradicional', 'com leite'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage9,
 		},
 	},
 
@@ -109,7 +125,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Especial', 'com leite'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage10,
 		},
 	},
 
@@ -121,7 +137,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Especial', 'alcoólico', 'gelado'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage11,
 		},
 	},
 
@@ -132,7 +148,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Especial'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage12,
 		},
 	},
 
@@ -143,7 +159,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Especial'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage13,
 		},
 	},
 
@@ -154,7 +170,7 @@ export const coffeeList: Coffee[] = [
 		tags: ['Especial', 'alcoólico'],
 		price: 9.9,
 		image: {
-			url: '',
+			url: CoffeeImage14,
 		},
 	},
 ];

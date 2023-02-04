@@ -57,7 +57,7 @@ export function ConfirmationForm() {
 					onClick={() => {
 						if (location.pathname === '/checkout' && hasErrors) {
 							toast.error(
-								'Preencha os dados de sua entrega e adicine método de pagamento',
+								'Preencha os dados de sua entrega e adicione o método de pagamento',
 							);
 						}
 					}}

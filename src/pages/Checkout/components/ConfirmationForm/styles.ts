@@ -23,6 +23,12 @@ export const SecondaryFormGroupContainer = styled(BaseFormGroupContainer)`
 		cursor: pointer;
 		border: 1px solid transparent;
 		border-radius: 6px;
+
+		transition: background-color 0.2s;
+
+		&:hover {
+			background-color: ${({ theme }) => theme.color.yellow.dark};
+		}
 	}
 `;
 
