@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createContext, ReactNode, useReducer } from 'react';
+import { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { Order, ItemOrder, PaymentMethod } from '~/models/Order';
 import { orderReducer } from '~/reducers/order/reducer';
 import {
@@ -7,6 +7,7 @@ import {
 	addNewItemAction,
 	addOneItemAction,
 	addPaymentMethodAction,
+	fineshedOrderAction,
 	removeItemAction,
 	removeOneItemAction,
 } from '~/reducers/order/action';
@@ -20,13 +21,14 @@ interface OrderContextType {
 	removeItem: (item: ItemOrder) => void;
 	addAddressDelivered: (address: Address) => void;
 	addPaymentMethod: (paymentMethod: PaymentMethod) => void;
+	finishedOrder: () => void;
 }
 
 interface OrderContextProps {
 	children: ReactNode;
 }
 
-const initialState: Order = {
+export const INITIAL_STATE: Order = {
 	items: [],
 	paymentMethod: null,
 	address: null,
@@ -38,16 +40,25 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 	const [orderState, dispatch] = useReducer(
 		orderReducer,
 		{
-			order: initialState,
+			order: INITIAL_STATE,
 		},
 		(initialValue) => {
-			return initialValue;
+			const storedStateAsJSON = localStorage.getItem(
+				'@IGNITE_COFFEE:ORDER_STATE:1.0.0',
+			);
+
+			if (!storedStateAsJSON) return initialValue;
+
+			return JSON.parse(storedStateAsJSON);
 		},
 	);
 
 	const { order } = orderState;
 
-	console.log(order);
+	useEffect(() => {
+		const stateJSON = JSON.stringify(orderState);
+		localStorage.setItem('@IGNITE_COFFEE:ORDER_STATE:1.0.0', stateJSON);
+	}, [orderState]);
 
 	function addNewItem(item: ItemOrder) {
 		const newItem: ItemOrder = {
@@ -78,6 +89,10 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 		dispatch(addPaymentMethodAction(paymentMethod));
 	}
 
+	function finishedOrder() {
+		dispatch(fineshedOrderAction());
+	}
+
 	return (
 		<OrderContext.Provider
 			value={{
@@ -88,6 +103,7 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 				removeItem,
 				addAddressDelivered,
 				addPaymentMethod,
+				finishedOrder,
 			}}
 		>
 			{children}

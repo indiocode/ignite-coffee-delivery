@@ -53,6 +53,8 @@ export function Checkout() {
 		addAddressDelivered(rest as Address);
 		addPaymentMethod(methodpayment);
 
+		toast.success('Pedido Efetuado com sucesso!');
+
 		navigate('/confirmation');
 
 		reset();

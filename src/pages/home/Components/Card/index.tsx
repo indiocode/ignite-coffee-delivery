@@ -10,6 +10,7 @@ import { CoffeeImage } from '~/components/CoffeeImage';
 import { useContext, useState } from 'react';
 import { OrderContext } from '~/contexts/OrderContext';
 import { ItemOrder } from '~/models/Order';
+import { toast } from 'react-toastify';
 
 interface CardProps {
 	coffee: Coffee;
@@ -35,6 +36,8 @@ export function Card({ coffee }: CardProps) {
 		};
 
 		addNewItem(newItemOrder);
+
+		toast.success('Item adicionado ao carrinho!');
 
 		setCounter(1);
 	}

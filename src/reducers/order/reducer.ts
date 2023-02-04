@@ -1,3 +1,4 @@
+import { INITIAL_STATE } from '~/contexts/OrderContext';
 import { Address } from '~/models/Address';
 import { Order, ItemOrder, PaymentMethod } from '~/models/Order';
 import { ActionTypes } from './action';
@@ -109,6 +110,16 @@ export function orderReducer(state: OrderState, action: Action): OrderState {
 				order: {
 					...state.order,
 					paymentMethod: action.payload as PaymentMethod,
+				},
+			};
+		}
+
+		case ActionTypes.FINESHEED_ORDER: {
+			return {
+				order: {
+					items: [],
+					address: null,
+					paymentMethod: null,
 				},
 			};
 		}

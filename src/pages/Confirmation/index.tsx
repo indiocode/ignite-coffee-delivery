@@ -1,12 +1,18 @@
 import { ShoppingCart } from 'phosphor-react';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Delivery } from '~/assets';
 import { CircleIcon } from '~/components/CircleIcon';
 import { OrderContext } from '~/contexts/OrderContext';
+import { PaymentMethod } from '~/models/Order';
 import * as S from './styles';
 
 export function Confirmation() {
-	const { order } = useContext(OrderContext);
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const { order, finishedOrder } = useContext(OrderContext);
 
 	const { address, paymentMethod } = order;
 
@@ -15,6 +21,19 @@ export function Confirmation() {
 		credit: 'Cartão de Crédito',
 		money: 'Dinheiro',
 	};
+
+	useEffect(() => {
+		if (location.pathname === '/confirmation') {
+			setTimeout(() => {
+				finishedOrder();
+
+				toast.success(
+					'Obrigado por estar conosco, ficamos felizes por nos escolher.',
+				);
+				navigate('/');
+			}, 4000);
+		}
+	});
 
 	return (
 		<S.ConfirmationContainer>
@@ -60,7 +79,7 @@ export function Confirmation() {
 							</CircleIcon>
 							<S.DetailItem>
 								<p>Pagamento na entrega </p>
-								<span>{PAYMENT_METHODS[paymentMethod]}</span>
+								<span>{PAYMENT_METHODS[paymentMethod as PaymentMethod]}</span>
 							</S.DetailItem>
 						</S.InfoItem>
 					</S.ConfirmationDetailsItem>
