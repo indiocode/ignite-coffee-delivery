@@ -1,10 +1,20 @@
 import { useContext } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { OrderContext } from '~/contexts/OrderContext';
 import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
 import { OrderItem } from '../OrderItem';
 import * as S from './styles';
 
 export function ConfirmationForm() {
+	const {
+		formState: { errors },
+	} = useFormContext();
+
+	const arrayKeyErrors = Object.keys(errors);
+
+	const hasErrors = arrayKeyErrors.length > 0;
+
 	const { order } = useContext(OrderContext);
 
 	const existItemsOnOrder = order.items.length > 0;
@@ -42,7 +52,18 @@ export function ConfirmationForm() {
 					</S.OrderTotalDetailsBold>
 				</S.OrderTotalInfo>
 
-				<button type="submit">Confirmar Pedido</button>
+				<button
+					type="submit"
+					onClick={() => {
+						if (location.pathname === '/checkout' && hasErrors) {
+							toast.error(
+								'Preencha os dados de sua entrega e adicine método de pagamento',
+							);
+						}
+					}}
+				>
+					Confirmar Pedido
+				</button>
 			</S.SecondaryFormGroupContainer>
 		</S.ConfirmationOrderContainer>
 	);

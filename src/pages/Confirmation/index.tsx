@@ -1,9 +1,21 @@
 import { ShoppingCart } from 'phosphor-react';
+import { useContext } from 'react';
 import { Delivery } from '~/assets';
 import { CircleIcon } from '~/components/CircleIcon';
+import { OrderContext } from '~/contexts/OrderContext';
 import * as S from './styles';
 
 export function Confirmation() {
+	const { order } = useContext(OrderContext);
+
+	const { address, paymentMethod } = order;
+
+	const PAYMENT_METHODS = {
+		debit: 'Cartão de Débito',
+		credit: 'Cartão de Crédito',
+		money: 'Dinheiro',
+	};
+
 	return (
 		<S.ConfirmationContainer>
 			<S.ConfirmationDetailsContainer>
@@ -18,9 +30,14 @@ export function Confirmation() {
 							</CircleIcon>
 							<S.DetailItem>
 								<p>
-									Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+									Entrega em{' '}
+									<strong>
+										{address?.street}, {address?.number}
+									</strong>
 								</p>
-								<span>Farrapos - Porto Alegre, RS</span>
+								<span>
+									{address?.district} - {address?.city}, ${address?.state}
+								</span>
 							</S.DetailItem>
 						</S.InfoItem>
 					</S.ConfirmationDetailsItem>
@@ -43,7 +60,7 @@ export function Confirmation() {
 							</CircleIcon>
 							<S.DetailItem>
 								<p>Pagamento na entrega </p>
-								<span> Cartão de Crédito</span>
+								<span>{PAYMENT_METHODS[paymentMethod]}</span>
 							</S.DetailItem>
 						</S.InfoItem>
 					</S.ConfirmationDetailsItem>

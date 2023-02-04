@@ -5,6 +5,7 @@ import * as S from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	sizeVariant: keyof typeof S.INPUT_SIZES;
+	hasError?: boolean;
 }
 
 export function Input({ name, ...rest }: InputProps) {

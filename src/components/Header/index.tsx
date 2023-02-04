@@ -5,6 +5,7 @@ import * as S from './styles';
 import { Logo } from '~/assets';
 import { useContext } from 'react';
 import { OrderContext } from '~/contexts/OrderContext';
+import { toast } from 'react-toastify';
 
 export function Header() {
 	const { order } = useContext(OrderContext);
@@ -23,7 +24,16 @@ export function Header() {
 						<MapPin size={18} weight="fill" />
 						Itacoatiara, AM
 					</span>
-					<NavLink to="/cart">
+					<NavLink
+						to={existItemsOnOrder ? '/checkout' : '/'}
+						onClick={() => {
+							if (!existItemsOnOrder) {
+								toast.error(
+									'Por favor, adicione ao menos um item no carrinho!',
+								);
+							}
+						}}
+					>
 						<ShoppingCart size={18} weight="fill" />
 						{existItemsOnOrder && <span>{order.items.length} </span>}
 					</NavLink>

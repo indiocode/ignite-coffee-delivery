@@ -5,6 +5,10 @@ import {
 	MapPinLine,
 	Money,
 } from 'phosphor-react';
+import { useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { defaultTheme } from '~/styles/themes/default';
 import { Input } from '../Input';
 import { PaymentMethod } from '../PaymentMethod';
@@ -12,6 +16,20 @@ import { PaymentMethod } from '../PaymentMethod';
 import * as S from './styles';
 
 export function CompleteForm() {
+	const location = useLocation();
+
+	const {
+		formState: { errors },
+	} = useFormContext();
+
+	const arrayErrors = Object.keys(errors);
+
+	const hasErrors = arrayErrors.length > 0;
+
+	// useEffect(() => {
+
+	// }, [hasErrors, location]);
+
 	return (
 		<S.CompleteOrderContainer>
 			<h1>Complete seu pedido</h1>
@@ -33,10 +51,16 @@ export function CompleteForm() {
 							maxLength={8}
 							minLength={8}
 							name="zipCode"
+							hasError={String(errors['zipCode']?.message).length > 0}
 						/>
 					</S.FormControl>
 					<S.FormControl>
-						<Input sizeVariant="xl" placeholder="Rua" name="street" />
+						<Input
+							sizeVariant="xl"
+							placeholder="Rua"
+							name="street"
+							hasError={String(errors['street']?.message).length > 0}
+						/>
 					</S.FormControl>
 					<S.FormControl>
 						<Input
@@ -45,6 +69,7 @@ export function CompleteForm() {
 							maxLength={4}
 							minLength={4}
 							name="number"
+							hasError={String(errors['number']?.message).length > 0}
 						/>
 						<Input
 							sizeVariant="lg"
@@ -53,14 +78,25 @@ export function CompleteForm() {
 						/>
 					</S.FormControl>
 					<S.FormControl>
-						<Input sizeVariant="sm" placeholder="Bairro" name="district" />
-						<Input sizeVariant="md" placeholder="Cidade" name="city" />
+						<Input
+							sizeVariant="sm"
+							placeholder="Bairro"
+							name="district"
+							hasError={String(errors['district']?.message).length > 0}
+						/>
+						<Input
+							sizeVariant="md"
+							placeholder="Cidade"
+							name="city"
+							hasError={String(errors['city']?.message).length > 0}
+						/>
 						<Input
 							sizeVariant="esm"
 							placeholder="UF"
 							maxLength={2}
 							minLength={2}
 							name="state"
+							hasError={String(errors['state']?.message).length > 0}
 						/>
 					</S.FormControl>
 				</S.FormControlContainer>

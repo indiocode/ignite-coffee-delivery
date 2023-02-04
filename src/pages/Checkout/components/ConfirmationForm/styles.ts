@@ -12,7 +12,7 @@ export const ConfirmationOrderContainer = styled(BaseSectionContainer)`
 export const SecondaryFormGroupContainer = styled(BaseFormGroupContainer)`
 	border-radius: 6px 44px;
 
-	button {
+	> button {
 		border: 0;
 		height: 2.875rem;
 		background-color: ${({ theme }) => theme.color.yellow.default};
