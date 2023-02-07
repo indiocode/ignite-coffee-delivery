@@ -55,7 +55,7 @@ export function Confirmation() {
 									</strong>
 								</p>
 								<span>
-									{address?.district} - {address?.city}, ${address?.state}
+									{address?.district} - {address?.city}, {address?.state}
 								</span>
 							</S.DetailItem>
 						</S.InfoItem>

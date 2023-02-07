@@ -10,6 +10,7 @@ import { useFormContext } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { defaultTheme } from '~/styles/themes/default';
+import { Mask } from '~/utils/Mask';
 import { Input } from '../Input';
 import { PaymentMethod } from '../PaymentMethod';
 
@@ -47,10 +48,11 @@ export function CompleteForm() {
 						<Input
 							sizeVariant="sm"
 							placeholder="CEP"
-							type="number"
+							type="text"
 							maxLength={8}
 							minLength={8}
 							name="zipCode"
+							mask="cep"
 							hasError={String(errors['zipCode']?.message).length > 0}
 						/>
 					</S.FormControl>
@@ -59,6 +61,7 @@ export function CompleteForm() {
 							sizeVariant="xl"
 							placeholder="Rua"
 							name="street"
+							mask="letter"
 							hasError={String(errors['street']?.message).length > 0}
 						/>
 					</S.FormControl>
@@ -69,12 +72,14 @@ export function CompleteForm() {
 							maxLength={4}
 							minLength={4}
 							name="number"
+							mask="number"
 							hasError={String(errors['number']?.message).length > 0}
 						/>
 						<Input
 							sizeVariant="lg"
 							placeholder="Complemento"
 							name="complement"
+							mask="letter"
 						/>
 					</S.FormControl>
 					<S.FormControl>
@@ -82,12 +87,14 @@ export function CompleteForm() {
 							sizeVariant="sm"
 							placeholder="Bairro"
 							name="district"
+							mask="letter"
 							hasError={String(errors['district']?.message).length > 0}
 						/>
 						<Input
 							sizeVariant="md"
 							placeholder="Cidade"
 							name="city"
+							mask="letter"
 							hasError={String(errors['city']?.message).length > 0}
 						/>
 						<Input
@@ -96,6 +103,7 @@ export function CompleteForm() {
 							maxLength={2}
 							minLength={2}
 							name="state"
+							mask="uppercase"
 							hasError={String(errors['state']?.message).length > 0}
 						/>
 					</S.FormControl>
