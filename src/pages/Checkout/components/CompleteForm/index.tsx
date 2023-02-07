@@ -62,6 +62,7 @@ export function CompleteForm() {
 							placeholder="Rua"
 							name="street"
 							mask="letter"
+							type="text"
 							hasError={String(errors['street']?.message).length > 0}
 						/>
 					</S.FormControl>
@@ -73,6 +74,7 @@ export function CompleteForm() {
 							minLength={4}
 							name="number"
 							mask="number"
+							type="text"
 							hasError={String(errors['number']?.message).length > 0}
 						/>
 						<Input
@@ -80,6 +82,7 @@ export function CompleteForm() {
 							placeholder="Complemento"
 							name="complement"
 							mask="letter"
+							type="text"
 						/>
 					</S.FormControl>
 					<S.FormControl>
@@ -88,6 +91,7 @@ export function CompleteForm() {
 							placeholder="Bairro"
 							name="district"
 							mask="letter"
+							type="text"
 							hasError={String(errors['district']?.message).length > 0}
 						/>
 						<Input
@@ -95,6 +99,7 @@ export function CompleteForm() {
 							placeholder="Cidade"
 							name="city"
 							mask="letter"
+							type="text"
 							hasError={String(errors['city']?.message).length > 0}
 						/>
 						<Input
@@ -102,6 +107,7 @@ export function CompleteForm() {
 							placeholder="UF"
 							maxLength={2}
 							minLength={2}
+							type="text"
 							name="state"
 							mask="uppercase"
 							hasError={String(errors['state']?.message).length > 0}
