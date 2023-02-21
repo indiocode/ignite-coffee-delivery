@@ -1,12 +1,16 @@
+import type { ReactElement } from 'react';
 import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { toast } from 'react-toastify';
+
 import { OrderContext } from '~/contexts/OrderContext';
 import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
+
 import { OrderItem } from '../OrderItem';
+
 import * as S from './styles';
 
-export function ConfirmationForm() {
+export function ConfirmationForm(): ReactElement {
 	const {
 		formState: { errors },
 	} = useFormContext();
@@ -54,7 +58,7 @@ export function ConfirmationForm() {
 
 				<button
 					type="submit"
-					onClick={() => {
+					onClick={(): void => {
 						if (location.pathname === '/checkout' && hasErrors) {
 							toast.error(
 								'Preencha os dados de sua entrega e adicione o método de pagamento',

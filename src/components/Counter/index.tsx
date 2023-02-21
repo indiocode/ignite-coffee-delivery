@@ -1,6 +1,8 @@
 import { Minus, Plus } from 'phosphor-react';
+import type { ReactElement } from 'react';
 
-import { CounterContainer, COUNTER_SIZE } from './styles';
+import type { COUNTER_SIZE } from './styles';
+import { CounterContainer } from './styles';
 
 interface CounterProps {
 	variantSize: keyof typeof COUNTER_SIZE;
@@ -9,7 +11,12 @@ interface CounterProps {
 	acrease: () => void;
 }
 
-export function Counter({ counter, decrease, acrease, ...rest }: CounterProps) {
+export function Counter({
+	counter,
+	decrease,
+	acrease,
+	...rest
+}: CounterProps): ReactElement {
 	return (
 		<CounterContainer {...rest}>
 			<button onClick={decrease} type="button">

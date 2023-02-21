@@ -5,31 +5,20 @@ import {
 	MapPinLine,
 	Money,
 } from 'phosphor-react';
-import { useEffect } from 'react';
+import type { ReactElement } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
 import { defaultTheme } from '~/styles/themes/default';
-import { Mask } from '~/utils/Mask';
+
 import { Input } from '../Input';
 import { PaymentMethod } from '../PaymentMethod';
 
 import * as S from './styles';
 
-export function CompleteForm() {
-	const location = useLocation();
-
+export function CompleteForm(): ReactElement {
 	const {
 		formState: { errors },
 	} = useFormContext();
-
-	const arrayErrors = Object.keys(errors);
-
-	const hasErrors = arrayErrors.length > 0;
-
-	// useEffect(() => {
-
-	// }, [hasErrors, location]);
 
 	return (
 		<S.CompleteOrderContainer>

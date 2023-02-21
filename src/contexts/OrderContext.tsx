@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { createContext, ReactNode, useEffect, useReducer } from 'react';
-import { Order, ItemOrder, PaymentMethod } from '~/models/Order';
-import { orderReducer } from '~/reducers/order/reducer';
+import type { ReactElement, ReactNode } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
+
+import type { Address } from '~/models/Address';
+import type { ItemOrder, Order, PaymentMethod } from '~/models/Order';
 import {
 	addAddressDeliveredAction,
 	addNewItemAction,
@@ -11,7 +13,7 @@ import {
 	removeItemAction,
 	removeOneItemAction,
 } from '~/reducers/order/action';
-import { Address } from '~/models/Address';
+import { orderReducer } from '~/reducers/order/reducer';
 
 interface OrderContextType {
 	order: Order;
@@ -36,7 +38,9 @@ export const INITIAL_STATE: Order = {
 
 export const OrderContext = createContext({} as OrderContextType);
 
-export function OrderContextProvider({ children }: OrderContextProps) {
+export function OrderContextProvider({
+	children,
+}: OrderContextProps): ReactElement {
 	const [orderState, dispatch] = useReducer(
 		orderReducer,
 		{
@@ -60,7 +64,7 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 		localStorage.setItem('@IGNITE_COFFEE:ORDER_STATE:1.0.0', stateJSON);
 	}, [orderState]);
 
-	function addNewItem(item: ItemOrder) {
+	function addNewItem(item: ItemOrder): void {
 		const newItem: ItemOrder = {
 			product: item.product,
 			quantity: item.quantity,
@@ -69,27 +73,27 @@ export function OrderContextProvider({ children }: OrderContextProps) {
 		dispatch(addNewItemAction(newItem));
 	}
 
-	function removeOneItem(item: ItemOrder) {
+	function removeOneItem(item: ItemOrder): void {
 		dispatch(removeOneItemAction(item));
 	}
 
-	function addOneItem(item: ItemOrder) {
+	function addOneItem(item: ItemOrder): void {
 		dispatch(addOneItemAction(item));
 	}
 
-	function removeItem(item: ItemOrder) {
+	function removeItem(item: ItemOrder): void {
 		dispatch(removeItemAction(item));
 	}
 
-	function addAddressDelivered(address: Address) {
+	function addAddressDelivered(address: Address): void {
 		dispatch(addAddressDeliveredAction(address));
 	}
 
-	function addPaymentMethod(paymentMethod: PaymentMethod) {
+	function addPaymentMethod(paymentMethod: PaymentMethod): void {
 		dispatch(addPaymentMethodAction(paymentMethod));
 	}
 
-	function finishedOrder() {
+	function finishedOrder(): void {
 		dispatch(fineshedOrderAction());
 	}
 

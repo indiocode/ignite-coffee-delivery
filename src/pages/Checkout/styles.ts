@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
-import { defaultTheme } from '~/styles/themes/default';
 
 export const CartContainer = styled.div`
 	display: flex;

@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled, { css } from 'styled-components';
+
 import { defaultTheme } from '~/styles/themes/default';
 
 export const INPUT_SIZES = defaultTheme.inputs.size;

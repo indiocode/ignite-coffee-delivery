@@ -1,13 +1,15 @@
+import type { ReactElement } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from './styles/themes/default';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { OrderContextProvider } from './contexts/OrderContext';
 import { Router } from './router';
 import { GlobalStyle } from './styles/global';
-import { OrderContextProvider } from './contexts/OrderContext';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { defaultTheme } from './styles/themes/default';
 
-export function App() {
+export function App(): ReactElement {
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<OrderContextProvider>

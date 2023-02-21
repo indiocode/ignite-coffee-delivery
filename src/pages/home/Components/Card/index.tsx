@@ -1,34 +1,35 @@
 import { ShoppingCart } from 'phosphor-react';
-import { Coffee } from '~/models/Coffee';
+import type { ReactElement } from 'react';
+import { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+
+import { CoffeeImage } from '~/components/CoffeeImage';
+import { Counter } from '~/components/Counter';
+import { OrderContext } from '~/contexts/OrderContext';
+import type { Coffee } from '~/models/Coffee';
+import type { ItemOrder } from '~/models/Order';
 import { formatNumberToMoney } from '~/utils/FormatNumberToMoney';
 
-import { Counter } from '~/components/Counter';
-
 import * as S from './styles';
-import { CoffeeImage } from '~/components/CoffeeImage';
-import { useContext, useState } from 'react';
-import { OrderContext } from '~/contexts/OrderContext';
-import { ItemOrder } from '~/models/Order';
-import { toast } from 'react-toastify';
 
 interface CardProps {
 	coffee: Coffee;
 }
 
-export function Card({ coffee }: CardProps) {
+export function Card({ coffee }: CardProps): ReactElement {
 	const { addNewItem } = useContext(OrderContext);
 
 	const [counter, setCounter] = useState<number>(1);
 
-	function increment() {
+	function increment(): void {
 		setCounter((prev) => prev + 1);
 	}
 
-	function decrement() {
+	function decrement(): void {
 		setCounter((prev) => (prev > 1 ? prev - 1 : prev));
 	}
 
-	function handleAddNewItem(product: Coffee) {
+	function handleAddNewItem(product: Coffee): void {
 		const newItemOrder: ItemOrder = {
 			product,
 			quantity: counter,
@@ -67,7 +68,7 @@ export function Card({ coffee }: CardProps) {
 						acrease={increment}
 						decrease={decrement}
 					/>
-					<S.Cart onClick={() => handleAddNewItem(coffee)}>
+					<S.Cart onClick={(): void => handleAddNewItem(coffee)}>
 						<ShoppingCart weight="fill" size={16} />
 					</S.Cart>
 				</S.CartItem>

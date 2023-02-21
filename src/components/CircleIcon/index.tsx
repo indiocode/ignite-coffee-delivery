@@ -1,11 +1,16 @@
-import { ReactNode } from 'react';
-import { CircleIconContainer, ICON_COLOR } from './styles';
+import type { ReactElement, ReactNode } from 'react';
+
+import type { ICON_COLOR } from './styles';
+import { CircleIconContainer } from './styles';
 
 interface CircleIconProps {
 	children: ReactNode;
 	type: keyof typeof ICON_COLOR;
 }
 
-export function CircleIcon({ children, ...rest }: CircleIconProps) {
+export function CircleIcon({
+	children,
+	...rest
+}: CircleIconProps): ReactElement {
 	return <CircleIconContainer {...rest}>{children}</CircleIconContainer>;
 }

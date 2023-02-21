@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+
 import {
 	CoffeeImage1,
 	CoffeeImage10,
@@ -15,7 +16,7 @@ import {
 	CoffeeImage8,
 	CoffeeImage9,
 } from '~/assets';
-import { Coffee } from '~/models/Coffee';
+import type { Coffee } from '~/models/Coffee';
 
 export const coffeeList: Coffee[] = [
 	{

@@ -1,5 +1,5 @@
-import { Address } from './Address';
-import { Coffee } from './Coffee';
+import type { Address } from './Address';
+import type { Coffee } from './Coffee';
 
 export type PaymentMethod = 'credit' | 'debit' | 'money';
 

@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
+
 import { BaseFormGroupContainer, BaseSectionContainer } from '../../styles';
 
 export const CompleteOrderContainer = styled(BaseSectionContainer)`

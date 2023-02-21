@@ -1,14 +1,17 @@
-import { MapPin, Money, ShoppingCart, Timer } from 'phosphor-react';
+import { MapPin, Money, Timer } from 'phosphor-react';
+import type { ReactElement } from 'react';
 import { useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
 import { Delivery } from '~/assets';
 import { CircleIcon } from '~/components/CircleIcon';
 import { OrderContext } from '~/contexts/OrderContext';
-import { PaymentMethod } from '~/models/Order';
+import type { PaymentMethod } from '~/models/Order';
+
 import * as S from './styles';
 
-export function Confirmation() {
+export function Confirmation(): ReactElement {
 	const navigate = useNavigate();
 	const location = useLocation();
 

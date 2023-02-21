@@ -1,5 +1,6 @@
-import { Address } from '~/models/Address';
-import { Order, ItemOrder, PaymentMethod } from '~/models/Order';
+import type { Address } from '~/models/Address';
+import type { ItemOrder, Order, PaymentMethod } from '~/models/Order';
+
 import { ActionTypes } from './action';
 
 interface OrderState {

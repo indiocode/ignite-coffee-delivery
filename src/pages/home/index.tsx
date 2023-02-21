@@ -1,12 +1,14 @@
-import { CoffeeImage } from '~/assets';
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
-import { Card } from '~/pages/home/Components/Card';
-import { coffeeList } from '~/data/Coffee';
+import type { ReactElement } from 'react';
+
+import { CoffeeImage } from '~/assets';
 import { CircleIcon } from '~/components/CircleIcon';
+import { coffeeList } from '~/data/Coffee';
+import { Card } from '~/pages/home/Components/Card';
 
 import * as S from './styles';
 
-export function Home() {
+export function Home(): ReactElement {
 	return (
 		<S.HomeContainer>
 			<main>

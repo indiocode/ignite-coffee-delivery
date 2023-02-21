@@ -1,6 +1,8 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
+import type { InputHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { PaymentMethod as PaymentMethodTypes } from '~/models/Order';
+
+import type { PaymentMethod as PaymentMethodTypes } from '~/models/Order';
+
 import * as S from './styles';
 
 interface PaymentMethodProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -14,7 +16,7 @@ export function PaymentMethod({
 	label,
 	paymentMethod,
 	...rest
-}: PaymentMethodProps) {
+}: PaymentMethodProps): ReactElement {
 	const { register } = useFormContext();
 	return (
 		<S.PaymentMethodCard>

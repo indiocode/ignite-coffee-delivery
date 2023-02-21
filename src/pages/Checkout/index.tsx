@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
-import * as S from './styles';
-import { useLocation, useNavigate } from 'react-router-dom';
-import zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { ReactElement } from 'react';
+import { useContext, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import zod from 'zod';
+
+import { OrderContext } from '~/contexts/OrderContext';
+import type { Address } from '~/models/Address';
+
 import { CompleteForm } from './components/CompleteForm';
 import { ConfirmationForm } from './components/ConfirmationForm';
-import { useContext, useEffect } from 'react';
-import { OrderContext } from '~/contexts/OrderContext';
-import { Address } from '~/models/Address';
-import { toast } from 'react-toastify';
+import * as S from './styles';
 
 enum PaymentMethods {
 	credit = 'credit',
@@ -34,7 +37,7 @@ const CompleteFormValidationSchema = zod.object({
 
 type CompleteFormData = zod.infer<typeof CompleteFormValidationSchema>;
 
-export function Checkout() {
+export function Checkout(): ReactElement {
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -47,7 +50,7 @@ export function Checkout() {
 
 	const { handleSubmit, reset } = completeAddress;
 
-	function handleOrderConfimation(data: CompleteFormData) {
+	function handleOrderConfimation(data: CompleteFormData): void {
 		const { methodpayment, ...rest } = data;
 
 		addAddressDelivered(rest as Address);

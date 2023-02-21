@@ -1,4 +1,13 @@
-export const Mask = {
+/* eslint-disable no-unused-vars */
+interface MaskProps {
+	cpf: (value: string) => string;
+	number: (value: string) => string;
+	cep: (value: string) => string;
+	letter: (value: string) => string;
+	uppercase: (value: string) => string;
+}
+
+export const Mask: MaskProps = {
 	cpf: (value: string) => {
 		return value
 			.replace(/\D/g, '')

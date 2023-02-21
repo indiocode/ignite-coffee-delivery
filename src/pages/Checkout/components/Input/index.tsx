@@ -1,5 +1,7 @@
-import { ChangeEvent, InputHTMLAttributes, useCallback, useState } from 'react';
+import type { ChangeEvent, InputHTMLAttributes, ReactElement } from 'react';
+import { useCallback, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+
 import { Mask } from '~/utils/Mask';
 
 import * as S from './styles';
@@ -10,7 +12,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	mask?: keyof typeof Mask;
 }
 
-export function Input({ name, mask, ...rest }: InputProps) {
+export function Input({ name, mask, ...rest }: InputProps): ReactElement {
 	const { register } = useFormContext();
 	const [value, setValue] = useState('');
 
